@@ -1,12 +1,11 @@
-import { IsNotEmpty, IsString, Length } from 'class-validator';
+import { Length } from 'class-validator';
+import { IsNotEmptyString } from 'src/common/decorators/is-not-empty-string.decorator';
 
 export class CreateProfileDto {
-  @IsString()
-  @IsNotEmpty()
+  @IsNotEmptyString()
   @Length(3, 100)
   name: string;
 
-  @IsString()
-  @IsNotEmpty()
+  @IsNotEmptyString()
   description: string;
 }

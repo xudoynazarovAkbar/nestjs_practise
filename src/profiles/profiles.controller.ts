@@ -11,11 +11,13 @@ import {
   Put,
 } from '@nestjs/common';
 
+import { Random } from 'src/common/decorators/random.decorator';
 import { CreateProfileDto } from './dto/create-profile.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { ProfilesService } from './profiles.service';
 import type { UUID } from 'crypto';
 
+@Random()
 @Controller('profiles')
 export class ProfilesController {
   constructor(private profilesService: ProfilesService) {}

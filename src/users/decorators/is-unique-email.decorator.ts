@@ -12,8 +12,9 @@ import { Injectable } from '@nestjs/common';
 export class IsUniqueEmailConstraint implements ValidatorConstraintInterface {
   constructor(private readonly usersService: UsersService) {}
 
-  validate(email: string) {
-    return !this.usersService.findByEmail(email);
+  async validate(email: string) {
+    const user = await this.usersService.findByEmail(email);
+    return user === null;
   }
 
   defaultMessage() {
